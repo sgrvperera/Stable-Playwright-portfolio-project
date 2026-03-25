@@ -16,7 +16,7 @@ export default defineConfig({
     ['allure-playwright', { outputFolder: 'allure-results' }],
   ],
   use: {
-     headless: false,
+    
   launchOptions: {
     slowMo: 1000,
   },
