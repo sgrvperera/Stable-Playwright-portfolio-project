@@ -1,0 +1,24 @@
+{
+  "name": "playwright-stable-booking-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A stable Playwright UI + API + CI portfolio framework built around a local booking platform.",
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "playwright test",
+    "test:ui": "playwright test tests/ui",
+    "test:api": "playwright test tests/api",
+    "test:integration": "playwright test tests/integration",
+    "report": "playwright show-report",
+    "allure:generate": "allure generate allure-results -o allure-report --clean",
+    "allure:open": "allure open allure-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^24.10.1",
+    "allure-commandline": "^2.30.0",
+    "allure-playwright": "^3.0.9",
+    "dotenv": "^17.3.1",
+    "typescript": "^5.9.3"
+  }
+}

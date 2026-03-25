@@ -1,0 +1,38 @@
+import { defineConfig, devices } from '@playwright/test';
+import dotenv from 'dotenv';
+import { ENV } from './src/config/env';
+
+dotenv.config();
+
+export default defineConfig({
+  testDir: './tests',
+  fullyParallel: false,
+  forbidOnly: !!process.env.CI,
+  retries: process.env.CI ? 1 : 0,
+  workers: process.env.CI ? 2 : undefined,
+  reporter: [
+    ['list'],
+    ['html', { open: 'never', outputFolder: 'playwright-report' }],
+    ['allure-playwright', { outputFolder: 'allure-results' }],
+  ],
+  use: {
+    baseURL: ENV.BASE_URL,
+    trace: 'on-first-retry',
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
+    actionTimeout: 15000,
+    navigationTimeout: 30000,
+  },
+  webServer: {
+    command: 'npm run start',
+    url: ENV.BASE_URL,
+    reuseExistingServer: !process.env.CI,
+    timeout: 120000,
+  },
+  projects: [
+    {
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] },
+    },
+  ],
+});
