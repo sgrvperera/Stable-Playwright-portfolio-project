@@ -11,7 +11,8 @@
     "test:integration": "playwright test tests/integration",
     "report": "playwright show-report",
     "allure:generate": "allure generate allure-results -o allure-report --clean",
-    "allure:open": "allure open allure-report"
+    "allure:open": "allure open allure-report",
+    "allure:serve": "allure serve allure-results"
   },
   "devDependencies": {
     "@playwright/test": "^1.57.0",
